@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Título da tela -->
+    <TextView
+        android:id="@+id/tvEscolherEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha o endereço de entrega"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Spinner para escolher o endereço -->
+    <Spinner
+        android:id="@+id/spinnerEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Texto de instrução -->
+    <TextView
+        android:id="@+id/tvInstrucoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caso queira cadastrar um novo endereço, clique no botão abaixo."
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"/>
+
+    <!-- Botão para cadastrar um novo endereço -->
+    <Button
+        android:id="@+id/btnCadastrarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Novo Endereço"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Botão para confirmar o endereço escolhido -->
+    <Button
+        android:id="@+id/btnConfirmarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Endereço"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

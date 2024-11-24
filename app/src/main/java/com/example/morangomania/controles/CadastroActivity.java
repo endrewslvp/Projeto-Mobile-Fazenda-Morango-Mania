@@ -1,37 +1,38 @@
-package com.example.morangomania;
+package com.example.morangomania.controles;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PagamentoActivity extends AppCompatActivity {
+import com.example.morangomania.R;
+
+public class CadastroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_pagamento);
+        setContentView(R.layout.activity_cadastro);
 
-        Button buttonNavigate = findViewById(R.id.btn_cancelar_pagamento);
+        Button buttonNavigate = findViewById(R.id.btnCadastrarCliente);
         buttonNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(PagamentoActivity.this, ListaProdutosActivity.class);
+                Intent in = new Intent(CadastroActivity.this, LoginActivity.class);
                 startActivity(in);
             }
         });
 
-        Button buttonNavigate1 = findViewById(R.id.btn_pagar_pagamento);
+        Button buttonNavigate1 = findViewById(R.id.btnCancelarCad);
         buttonNavigate1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in1 = new Intent(PagamentoActivity.this, QrcodeActivity.class);
+                Intent in1 = new Intent(CadastroActivity.this, MainActivity.class);
                 startActivity(in1);
             }
         });
+
 
     }
 }

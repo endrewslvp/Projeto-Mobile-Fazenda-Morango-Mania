@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">morangomania</string>
 
-    <string name="descricao_imagem_cadastro"/>
+    <string name="descricao_imagem_cadastro" />
 </resources>

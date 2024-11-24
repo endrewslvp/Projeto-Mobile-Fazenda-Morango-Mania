@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,46 @@
         android:theme="@style/Theme.Morangomania"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".EscolhaEnderecoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroCliente3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroCliente2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PagamentoCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PagamentoPixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controles.ResumoPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controles.ItemCarrinhoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controles.CarrinhoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controles.DetalhesProdutoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity_detalhes_produto"
+            android:exported="false" />
+        <activity
+            android:name=".controles.InicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controles.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,17 +62,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".CadastroActivity"></activity>
-        <activity android:name=".EditarCadastroActivity"></activity>
-        <activity android:name=".PainelcontroleActivity"></activity>
-        <activity android:name=".ListaProdutosActivity"></activity>
-        <activity android:name=".ProdutoActivity"></activity>
-        <activity android:name=".CompraActivity"></activity>
-        <activity android:name=".PagamentoActivity"></activity>
-        <activity android:name=".QrcodeActivity"></activity>
-
-
+        <activity android:name=".controles.LoginActivity" />
+        <activity android:name=".controles.CadastroActivity" />
+        <activity android:name=".controles.EditarCadastroActivity" />
+        <activity android:name=".controles.PainelcontroleActivity" />
+        <activity android:name=".controles.ListaProdutosActivity" />
+        <activity android:name=".controles.ProdutoActivity" />
+        <activity android:name=".controles.CompraActivity" />
+        <activity android:name=".controles.PagamentoActivity" />
+        <activity android:name=".controles.QrcodeActivity" />
     </application>
 
 </manifest>

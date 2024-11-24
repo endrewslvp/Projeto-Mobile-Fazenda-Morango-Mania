@@ -1,115 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/img_pagamento" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextText1"
-        android:layout_width="311dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/caixanome"
-        android:ems="10"
-        android:hint="Insira seu CPF"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.402"
-        tools:ignore="MissingConstraints" />
-
+    <!-- Título -->
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="75dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="48dp"
-        android:text="CPF *"
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione a Forma de Pagamento"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.336" />
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:id="@+id/btn_cancelar_pagamento"
-        android:layout_width="98dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_cancelar"
-        android:fontFamily="@font/open_sans_light"
-        android:text="cancelar"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.801" />
-
-    <Button
-        android:id="@+id/btn_pagar_pagamento"
-        android:layout_width="98dp"
-        android:layout_height="50dp"
-        android:background="@drawable/btn_pagar"
-        android:fontFamily="@font/open_sans_light"
-        android:text="Pagar"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.801" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
+    <!-- Opções de Pagamento -->
+    <RadioGroup
+        android:id="@+id/paymentOptionsGroup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Débito"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="388dp" />
+        android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/debitCardOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cartão de Débito" />
+
+        <RadioButton
+            android:id="@+id/creditCardOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cartão de Crédito" />
+
+        <RadioButton
+            android:id="@+id/pixOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pix" />
+    </RadioGroup>
+
+    <!-- Valor Total -->
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crédito"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="388dp" />
+        android:text="Total: R$ 0,00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"/>
 
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
+    <!-- Botões -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PIX"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="388dp" />
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
+            android:text="Continuar"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

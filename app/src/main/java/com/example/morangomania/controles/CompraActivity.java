@@ -1,12 +1,10 @@
-package com.example.morangomania;
+package com.example.morangomania.controles;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.morangomania.R;
 
 public class CompraActivity extends AppCompatActivity {
     @Override

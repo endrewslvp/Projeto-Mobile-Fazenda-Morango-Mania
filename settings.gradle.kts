@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "morangomania"
 include(":app")
- 
+include(":app:lib")

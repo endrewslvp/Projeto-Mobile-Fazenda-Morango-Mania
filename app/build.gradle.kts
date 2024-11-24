@@ -37,6 +37,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(files("lib\\jtds-1.3.1.jar"))
+    implementation(libs.compiler)
+    implementation ("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
+    implementation ("com.google.zxing:core:3.4.1")  // Versão mais recente até 2023
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

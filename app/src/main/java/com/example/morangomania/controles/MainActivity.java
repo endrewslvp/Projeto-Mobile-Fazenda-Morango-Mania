@@ -1,4 +1,4 @@
-package com.example.morangomania;
+package com.example.morangomania.controles;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.morangomania.CadastroClienteActivity;
+import com.example.morangomania.LoginClienteActivity;
+import com.example.morangomania.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            Button buttonNavigate = findViewById(R.id.btn_login);
-            buttonNavigate.setOnClickListener(new View.OnClickListener() {
+            Button btnLogin = findViewById(R.id.btnLogin);
+            btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent in = new Intent(MainActivity.this, LoginActivity.class);
@@ -24,15 +28,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-
-          ;
-
-            Button buttonNavigate1 = findViewById(R.id.btn_pagar_pagamento);
-            buttonNavigate1.setOnClickListener(new View.OnClickListener() {
+            Button btnLoginClientes = findViewById(R.id.btnLoginClientes);
+            btnLoginClientes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent in1 = new Intent(MainActivity.this, CadastroActivity.class);
-                    startActivity(in1);
+                    Intent in = new Intent(MainActivity.this, LoginClienteActivity.class);
+                    startActivity(in);
                 }
             });
         }
