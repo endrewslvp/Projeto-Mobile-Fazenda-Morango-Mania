@@ -43,6 +43,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
 
         // Recebe dados do produto da Intent
         Intent intent = getIntent();
+        int id = intent.getIntExtra("id",0);
         String nome = intent.getStringExtra("nome");
         precoProduto = intent.getDoubleExtra("preco", 0);
         String validade = intent.getStringExtra("validade");
@@ -82,7 +83,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         // Adiciona o produto ao carrinho
         btnAdicionarCarrinho.setOnClickListener(v -> {
             if (quantidade <= estoqueDisponivel) {
-                ProdutoCarrinho produto = new ProdutoCarrinho(nome, precoProduto, quantidade);
+                ProdutoCarrinho produto = new ProdutoCarrinho(id,nome, precoProduto, quantidade);
                 Carrinho.adicionarProduto(produto);
                 finish();  // Fecha a activity de detalhes do produto
             }

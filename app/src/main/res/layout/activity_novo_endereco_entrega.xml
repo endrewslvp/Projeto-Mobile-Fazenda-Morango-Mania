@@ -24,10 +24,10 @@
 
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextBairroCliente"
+        android:id="@+id/editTextBairroEnderecoNovo"
         android:layout_width="110dp"
         android:layout_height="53dp"
-        android:layout_marginStart="244dp"
+        android:layout_marginStart="248dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/caixanome"
         android:ems="10"
@@ -39,115 +39,46 @@
         app:layout_constraintTop_toBottomOf="@id/textView13" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="76dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="404dp"
-        android:text="Bairro*"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="169dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="200dp"
-        android:text="E-mail *"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextEmailCliente"
-        android:layout_width="311dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/caixanome"
-        android:ems="10"
-        android:hint="Insira seu e-mail"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView8" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="138dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="304dp"
-        android:text="CEP *"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextCepCliente"
-        android:layout_width="135dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/caixanome"
-        android:ems="10"
-        android:hint="Insira seu CEP"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView9" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="138dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="304dp"
-        android:text="Cidade *"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextCidadeCliente"
-        android:layout_width="135dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/caixanome"
-        android:ems="10"
-        android:hint="Insira sua cidade"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView12" />
-
-    <TextView
         android:id="@+id/textView11"
         android:layout_width="54dp"
         android:layout_height="29dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="352dp"
         android:text="Rua*"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="54dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="352dp"
+        android:text="N°*"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="76dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="352dp"
+        android:text="Bairro*"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextRuaCliente"
+        android:id="@+id/editTextRuaEnderecoNovo"
         android:layout_width="131dp"
         android:layout_height="50dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/caixanome"
         android:hint="Insira sua rua"
@@ -158,10 +89,10 @@
         app:layout_constraintTop_toBottomOf="@id/textView11" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextNumeroCliente"
+        android:id="@+id/editTextNumeroEnderecoNovo"
         android:layout_width="53dp"
         android:layout_height="50dp"
-        android:layout_marginStart="180dp"
+        android:layout_marginStart="184dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/caixanome"
         android:ems="10"
@@ -173,19 +104,61 @@
         app:layout_constraintTop_toBottomOf="@id/textView10" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="54dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="404dp"
-        android:text="N°*"
+        android:id="@+id/textView9"
+        android:layout_width="138dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="236dp"
+        android:text="CEP *"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="138dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="236dp"
+        android:text="Cidade *"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextCepEnderecoNovo"
+        android:layout_width="135dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/caixanome"
+        android:ems="10"
+        android:hint="Insira seu CEP"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView9" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextCidadeEnderecoNovo"
+        android:layout_width="135dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/caixanome"
+        android:ems="10"
+        android:hint="Insira sua cidade"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView12" />
+
     <Button
-        android:id="@+id/btnContinuar2"
+        android:id="@+id/btnCadastrarEnderecoNovo"
         android:layout_width="112dp"
         android:layout_height="49dp"
         android:layout_marginBottom="148dp"
@@ -194,11 +167,11 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnCancelarCad2"
+        android:id="@+id/btnCancelarCadEndereco"
         android:layout_width="115dp"
         android:layout_height="48dp"
         android:layout_marginBottom="148dp"

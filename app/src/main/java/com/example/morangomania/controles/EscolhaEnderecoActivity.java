@@ -1,5 +1,6 @@
 package com.example.morangomania.controles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.morangomania.NovoEnderecoEntregaActivity;
 import com.example.morangomania.R;
 import com.example.morangomania.model.Cliente;
 
@@ -24,13 +26,16 @@ public class EscolhaEnderecoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolha_endereco);
 
+        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
+        String metodoPagamento = getIntent().getStringExtra("metodoPagamento");
+        double totalCompra = getIntent().getDoubleExtra("totalCompra", 0.0);
+
         // Inicializando os elementos da tela
         spinnerEndereco = findViewById(R.id.spinnerEndereco);
         btnCadastrarEndereco = findViewById(R.id.btnCadastrarEndereco);
         btnConfirmarEndereco = findViewById(R.id.btnConfirmarEndereco);
 
         // Carregar lista de endereços disponíveis (exemplo estático, substitua com dados do banco)
-        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
         listaEnderecos = new ArrayList<>();
         listaEnderecos.add(cliente.getEndereco().toString());
 
@@ -41,14 +46,22 @@ public class EscolhaEnderecoActivity extends AppCompatActivity {
 
         // Ação do botão para cadastrar um novo endereço
         btnCadastrarEndereco.setOnClickListener(v -> {
-            //Intent intent = new Intent(EscolherEnderecoActivity.this, CadastrarEnderecoActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(EscolhaEnderecoActivity.this, NovoEnderecoEntregaActivity.class);
+            intent.putExtra("Cliente",cliente);
+            intent.putExtra("metodoPagamento", metodoPagamento);
+            intent.putExtra("totalCompra", totalCompra);
+            startActivity(intent);
         });
 
         // Ação do botão para confirmar o endereço escolhido
         btnConfirmarEndereco.setOnClickListener(v -> {
             String enderecoEscolhido = spinnerEndereco.getSelectedItem().toString();
             Toast.makeText(EscolhaEnderecoActivity.this, "Endereço escolhido: " + enderecoEscolhido, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(EscolhaEnderecoActivity.this, ResumoPedidoActivity.class);
+            intent.putExtra("Cliente",cliente);
+            intent.putExtra("metodoPagamento", metodoPagamento);
+            intent.putExtra("totalCompra", totalCompra);
+            startActivity(intent);
         });
     }
 }

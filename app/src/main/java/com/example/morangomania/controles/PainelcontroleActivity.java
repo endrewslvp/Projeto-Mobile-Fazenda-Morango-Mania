@@ -19,7 +19,7 @@ public class PainelcontroleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_painelcontrole);
 
         buttonProducao = findViewById(R.id.btnAcessarProducao);
-        buttonVendas = findViewById(R.id.btnCancelarCad);
+        buttonVendas = findViewById(R.id.btnCancelarCad1);
 
         buttonProducao.setOnClickListener(new View.OnClickListener() {
             @Override

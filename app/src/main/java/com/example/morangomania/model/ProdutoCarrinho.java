@@ -4,17 +4,27 @@ import android.graphics.Bitmap;
 
 public class ProdutoCarrinho {
 
+    private int id;
     private String nome;
     private double preco;
     private int quantidade;
     private double precoTotal;
     private Bitmap imagem;
 
-    public ProdutoCarrinho(String nome, double preco, int quantidade) {
+    public ProdutoCarrinho(int id, String nome, double preco, int quantidade) {
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
         this.precoTotal = preco * quantidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

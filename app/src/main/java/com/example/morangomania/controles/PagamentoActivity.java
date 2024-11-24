@@ -12,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.morangomania.R;
+import com.example.morangomania.model.Cliente;
 
 public class PagamentoActivity extends AppCompatActivity {
     private RadioGroup paymentOptionsGroup;
@@ -23,6 +24,8 @@ public class PagamentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
+
+        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
 
         // Inicializa componentes
         paymentOptionsGroup = findViewById(R.id.paymentOptionsGroup);
@@ -56,11 +59,10 @@ public class PagamentoActivity extends AppCompatActivity {
             Toast.makeText(this, "Forma de pagamento selecionada: " + paymentMethod, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(PagamentoActivity.this, EscolhaEnderecoActivity.class);
+            intent.putExtra("Cliente",cliente);
+            intent.putExtra("metodoPagamento", paymentMethod);
+            intent.putExtra("totalCompra", totalAmount);
             startActivity(intent);
-            //Intent intent = new Intent(PagamentoActivity.this, ResumoPedidoActivity.class);
-//            intent.putExtra("metodoPagamento", paymentMethod);
-//            intent.putExtra("totalCompra", totalAmount);
-//            startActivity(intent);
         });
     }
 }

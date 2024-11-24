@@ -9,46 +9,27 @@ public class Cliente implements Serializable {
     private String telefone;
     private String email;
     private String cpf;
-
     private Endereco endereco;
-
     private String senha;
 
-    private String cep;
-    private String rua;
-    private String numero;
-    private  String bairro;
-
     public String getCep() {
-        return cep;
+        return endereco.getCep();
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public String getCidade(){
+        return endereco.getCidade();
     }
 
     public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
+        return endereco.getRua();
     }
 
     public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
+        return endereco.getNumero();
     }
 
     public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+        return endereco.getBairro();
     }
 
     public int getId() {

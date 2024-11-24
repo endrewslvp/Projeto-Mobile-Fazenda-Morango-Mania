@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.morangomania.R;
 import com.example.morangomania.adapter.CarrinhoAdapter;
+import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.ProdutoCarrinho;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class CarrinhoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho);
+
+        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
 
         listViewCarrinho = findViewById(R.id.listViewCarrinho);
         tvTotalCompra = findViewById(R.id.tvTotalCompra);
@@ -47,6 +50,7 @@ public class CarrinhoActivity extends AppCompatActivity {
 
             // Cria um Intent e passa o valor total como extra
             Intent intentCarrinho = new Intent(CarrinhoActivity.this, PagamentoActivity.class);
+            intentCarrinho.putExtra("Cliente",cliente);
             intentCarrinho.putExtra("TOTAL_COMPRA", totalCompra);
             startActivity(intentCarrinho);
         });

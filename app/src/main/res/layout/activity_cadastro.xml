@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnCadastrarCliente"
+        android:id="@+id/btnContinuar1"
         android:layout_width="88dp"
         android:layout_height="49dp"
         android:layout_marginBottom="148dp"
@@ -174,7 +174,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnCancelarCad"
+        android:id="@+id/btnCancelarCad1"
         android:layout_width="85dp"
         android:layout_height="48dp"
         android:layout_marginBottom="148dp"

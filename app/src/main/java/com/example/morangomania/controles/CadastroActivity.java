@@ -15,7 +15,7 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        Button buttonNavigate = findViewById(R.id.btnCadastrarCliente);
+        Button buttonNavigate = findViewById(R.id.btnContinuar1);
         buttonNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,7 +24,7 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
 
-        Button buttonNavigate1 = findViewById(R.id.btnCancelarCad);
+        Button buttonNavigate1 = findViewById(R.id.btnCancelarCad1);
         buttonNavigate1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

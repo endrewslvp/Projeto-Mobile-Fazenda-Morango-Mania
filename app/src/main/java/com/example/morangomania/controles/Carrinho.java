@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Carrinho {
     private static List<ProdutoCarrinho> itensCarrinho = new ArrayList<>();
+    private static double precoTotal;
 
     public static void adicionarProduto(ProdutoCarrinho produto) {
         itensCarrinho.add(produto);
@@ -16,12 +17,9 @@ public class Carrinho {
         return itensCarrinho;
     }
 
-    public static double calcularTotal() {
-        double total = 0;
-        for (ProdutoCarrinho produto : itensCarrinho) {
-            total += produto.getPrecoTotal();
-        }
-        return total;
+    // Novo método para limpar o carrinho
+    public static void limparCarrinho() {
+        itensCarrinho.clear();
     }
 }
 

@@ -5,11 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class CadastroClienteActivity extends AppCompatActivity {
 
@@ -22,11 +18,11 @@ public class CadastroClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_cliente);
 
         // Associar campos
-        editNome = findViewById(R.id.editTextSenha);
-        editCPF = findViewById(R.id.editTextConfirmacaoSenha);
-        editTelefone = findViewById(R.id.editTextNumero);
-        btnContinuar = findViewById(R.id.btnCadastrarCliente);
-        btnCancelarCad = findViewById(R.id.btnCancelarCad);
+        editNome = findViewById(R.id.editTextNomeCliente);
+        editCPF = findViewById(R.id.editTextCPFCliente);
+        editTelefone = findViewById(R.id.editTextTelefoneCliente);
+        btnContinuar = findViewById(R.id.btnContinuar1);
+        btnCancelarCad = findViewById(R.id.btnCancelarCad1);
 
         btnContinuar.setOnClickListener(v -> {
             // Captura os dados e envia para a próxima tela

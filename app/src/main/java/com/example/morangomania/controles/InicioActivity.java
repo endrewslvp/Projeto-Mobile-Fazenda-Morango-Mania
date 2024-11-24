@@ -44,9 +44,7 @@ public class InicioActivity extends AppCompatActivity {
         EditText searchBar = findViewById(R.id.searchBar);
         produtoDao = new ProdutosDAO();
 
-
-//        Intent in = getIntent();
-//        Cliente cliente =(Cliente) in.getSerializableExtra("Cliente");
+        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
 //        usuarioname = findViewById(R.id.teste);
 //        usuarioname.setText(cliente.getNome());
 
@@ -70,6 +68,7 @@ public class InicioActivity extends AppCompatActivity {
             }
 
             Intent intent = new Intent(InicioActivity.this, DetalhesProdutoActivity.class);
+            intent.putExtra("id",produtoSelecionado.getId());
             intent.putExtra("nome", produtoSelecionado.getNome());
             intent.putExtra("preco", produtoSelecionado.getPreco());
             intent.putExtra("validade", produtoSelecionado.getValidade());
@@ -93,6 +92,7 @@ public class InicioActivity extends AppCompatActivity {
         ImageButton cartButton = findViewById(R.id.cartButton);
         cartButton.setOnClickListener(v -> {
             Intent intentCarrinho = new Intent(InicioActivity.this, CarrinhoActivity.class);
+            intentCarrinho.putExtra("Cliente",cliente);
             startActivity(intentCarrinho);
         });
     }

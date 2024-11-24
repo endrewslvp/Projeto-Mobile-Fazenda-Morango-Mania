@@ -1,8 +1,11 @@
 package com.example.morangomania.model;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable {
 
     private String cep;
+    private String cidade;
     private String rua;
     private String numero;
     private  String bairro;
@@ -39,8 +42,16 @@ public class Endereco {
         this.bairro = bairro;
     }
 
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
     @Override
     public String toString(){
-        return "Rua: " + rua + ", Bairro: " + bairro + ", Cidade: " + ", CEP: " + cep;
+        return getRua()+", "+getNumero()+" - "+getBairro()+" - "+getCep()+" - "+getCidade();
     }
 }

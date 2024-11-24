@@ -6,11 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.morangomania.DAO.ClienteDAO;
 import com.example.morangomania.model.Cliente;
@@ -32,7 +28,7 @@ public class CadastroCliente3Activity extends AppCompatActivity {
         editSenha = findViewById(R.id.editTextSenha);
         editConfirmarSenha = findViewById(R.id.editTextConfirmacaoSenha);
         btnCadastrar = findViewById(R.id.btnCadastrarCliente);
-        btnCancelarCad = findViewById(R.id.btnCancelarCad);
+        btnCancelarCad = findViewById(R.id.btnCancelarCad3);
 
         // Recebe dados das telas anteriores
         Intent intent = getIntent();
@@ -41,6 +37,7 @@ public class CadastroCliente3Activity extends AppCompatActivity {
         String telefone = intent.getStringExtra("telefone");
         String email = intent.getStringExtra("email");
         String cep = intent.getStringExtra("cep");
+        String cidade = intent.getStringExtra("cidade");
         String rua = intent.getStringExtra("rua");
         String numero = intent.getStringExtra("numero");
         String bairro = intent.getStringExtra("bairro");
@@ -58,6 +55,7 @@ public class CadastroCliente3Activity extends AppCompatActivity {
                 cliente.setEmail(email);
                 cliente.setCpf(cpf);
                 endereco.setCep(cep);
+                endereco.setCidade(cidade);
                 endereco.setRua(rua);
                 endereco.setNumero(numero);
                 endereco.setBairro(bairro);
@@ -75,7 +73,8 @@ public class CadastroCliente3Activity extends AppCompatActivity {
 
                 if (resultado > 0) {
                     Toast.makeText(CadastroCliente3Activity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                    finish(); // Fecha a activity
+                    Intent in = new Intent(CadastroCliente3Activity.this,LoginClienteActivity.class);
+                    startActivity(in);
                 } else {
                     Toast.makeText(CadastroCliente3Activity.this, "Erro ao cadastrar cliente.", Toast.LENGTH_SHORT).show();
                 }

@@ -89,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnCancelarCad"
+        android:id="@+id/btnCancelarCad3"
         android:layout_width="115dp"
         android:layout_height="48dp"
         android:layout_marginBottom="148dp"

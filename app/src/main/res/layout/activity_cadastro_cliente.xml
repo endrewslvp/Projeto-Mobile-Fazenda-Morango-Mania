@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/telacadcliente" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextSenha"
+        android:id="@+id/editTextNomeCliente"
         android:layout_width="311dp"
         android:layout_height="50dp"
         android:layout_marginStart="44dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextConfirmacaoSenha"
+        android:id="@+id/editTextCPFCliente"
         android:layout_width="311dp"
         android:layout_height="50dp"
         android:layout_marginStart="44dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView9" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextNumero"
+        android:id="@+id/editTextTelefoneCliente"
         android:layout_width="311dp"
         android:layout_height="50dp"
         android:layout_marginStart="44dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView10" />
 
     <Button
-        android:id="@+id/btnCadastrarCliente"
+        android:id="@+id/btnContinuar1"
         android:layout_width="112dp"
         android:layout_height="49dp"
         android:layout_marginBottom="148dp"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnCancelarCad"
+        android:id="@+id/btnCancelarCad1"
         android:layout_width="115dp"
         android:layout_height="48dp"
         android:layout_marginBottom="148dp"

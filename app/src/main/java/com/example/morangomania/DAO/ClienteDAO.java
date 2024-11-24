@@ -41,10 +41,11 @@ public class ClienteDAO {
             endereco.setNumero(rs.getString(8));
             endereco.setBairro(rs.getString(9));
             cliente.setSenha(rs.getString(10));
-
-            cliente.setEndereco(endereco);
+            endereco.setCidade(rs.getString(11));
 
             conn.close();
+
+            cliente.setEndereco(endereco);
             return cliente;
         }
 
@@ -54,7 +55,7 @@ public class ClienteDAO {
     // Inserir cliente
     public int inserirCliente(Cliente cliente) throws SQLException {
 
-        String comando = "INSERT INTO dbo.Clientes (Nome,Telefone,Email,cpf,CEP,Rua,Numero,Bairro,senha) VALUES (?,?,?,?,?,?,?,?,?)";
+        String comando = "INSERT INTO dbo.Clientes (Nome,Telefone,Email,cpf,CEP,Rua,Numero,Bairro,senha,Cidade) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement pst = conn.prepareStatement(comando);
 
@@ -68,6 +69,7 @@ public class ClienteDAO {
         pst.setString(7, cliente.getNumero());
         pst.setString(8, cliente.getBairro());
         pst.setString(9, cliente.getSenha());
+        pst.setString(10,cliente.getCidade());
 
         return pst.executeUpdate();
     }

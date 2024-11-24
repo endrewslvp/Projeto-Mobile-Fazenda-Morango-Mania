@@ -27,4 +27,13 @@
         android:layout_height="wrap_content"
         android:text="Copiar Código" />
 
+    <Button
+        android:id="@+id/btnConfirmarPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Já realizei o pagamento"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@color/white"/>
+
 </LinearLayout>

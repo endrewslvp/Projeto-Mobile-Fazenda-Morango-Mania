@@ -42,6 +42,7 @@ dependencies {
     implementation ("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
     implementation ("com.google.zxing:core:3.4.1")  // Versão mais recente até 2023
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
