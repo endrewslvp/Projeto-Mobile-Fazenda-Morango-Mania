@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.morangomania.NovoEnderecoEntregaActivity;
 import com.example.morangomania.R;
+import com.example.morangomania.UserProfileActivity;
 import com.example.morangomania.model.Cliente;
 
 import java.util.ArrayList;
@@ -62,6 +64,13 @@ public class EscolhaEnderecoActivity extends AppCompatActivity {
             intent.putExtra("metodoPagamento", metodoPagamento);
             intent.putExtra("totalCompra", totalCompra);
             startActivity(intent);
+        });
+
+        ImageButton profileButton = findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(v -> {
+            Intent intentProfile = new Intent(EscolhaEnderecoActivity.this, UserProfileActivity.class);
+            intentProfile.putExtra("Cliente",cliente);
+            startActivity(intentProfile);
         });
     }
 }

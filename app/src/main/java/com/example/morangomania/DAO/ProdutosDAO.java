@@ -6,6 +6,7 @@ import com.example.morangomania.conexao.ConexaoSQL;
 import com.example.morangomania.model.Produtos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -45,4 +46,6 @@ public class ProdutosDAO {
 
         return produtos;
     }
+
+
 }

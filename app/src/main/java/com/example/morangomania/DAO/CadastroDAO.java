@@ -33,6 +33,8 @@ public class CadastroDAO {
             return usuario;
         }
 
+        conn.close();
+
         return null;
     }
 }

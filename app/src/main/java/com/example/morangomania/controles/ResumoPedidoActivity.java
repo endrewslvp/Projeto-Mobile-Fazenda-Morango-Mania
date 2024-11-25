@@ -3,6 +3,7 @@ package com.example.morangomania.controles;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.morangomania.PagamentoCartaoActivity;
 import com.example.morangomania.PagamentoPixActivity;
 import com.example.morangomania.R;
+import com.example.morangomania.UserProfileActivity;
 import com.example.morangomania.adapter.ResumoPedidoAdapter;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Endereco;
@@ -81,6 +83,13 @@ public class ResumoPedidoActivity extends AppCompatActivity {
                 intentCartao.putExtra("totalCompra", totalCompra);
                 startActivity(intentCartao);
             }
+        });
+
+        ImageButton profileButton = findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(v -> {
+            Intent intentProfile = new Intent(ResumoPedidoActivity.this, UserProfileActivity.class);
+            intentProfile.putExtra("Cliente",cliente);
+            startActivity(intentProfile);
         });
     }
 }

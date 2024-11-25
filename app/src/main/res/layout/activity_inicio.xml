@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:padding="16dp"
     tools:context=".controles.InicioActivity">
 
     <!-- Logo Centralizada no Topo -->
@@ -12,7 +12,7 @@
         android:layout_width="197dp"
         android:layout_height="41dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/logo" />
 
     <!-- Ícone de Perfil no Canto Superior Direito -->
@@ -22,17 +22,50 @@
         android:layout_height="32dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="Profile"
-        android:src="@drawable/ic_profile" />
+        android:src="@drawable/ic_profile"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Mensagem de Boas-Vindas -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Bem-vindo, [usuario]."
+        android:textColor="#ff5b5b"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvWelcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvWelcome"
+        android:layout_centerHorizontal="true"
+        android:text="O que vai querer hoje?"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
     <!-- Barra de Pesquisa -->
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/logoImageView"
+        android:layout_below="@id/tvWelcome2"
         android:layout_margin="16dp"
         android:background="@drawable/search_bar_background"
         android:drawableStart="@drawable/ic_search"
@@ -61,7 +94,7 @@
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:background="@color/lightGray"
+        android:background="@drawable/rounded_bottom_menu"
         android:weightSum="3">
 
         <!-- Botão de Início -->
@@ -82,23 +115,17 @@
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Carrinho"
-            android:src="@drawable/ic_cart" />
+            android:src="@drawable/ic_cartwhite" />
 
-        <!-- Botão de Configurações -->
+        <!-- Botão de Pedidos -->
         <ImageButton
-            android:id="@+id/settingsButton"
+            android:id="@+id/pedidosButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Configurações"
-            android:src="@drawable/ic_settings" />
+            android:src="@drawable/ic_saco" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/teste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
 </RelativeLayout>

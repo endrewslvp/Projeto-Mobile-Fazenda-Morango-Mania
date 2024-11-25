@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -17,13 +18,18 @@ import com.example.morangomania.model.ProdutoCarrinho;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DetalhesProdutoActivity extends AppCompatActivity {
     private TextView tvNomeProduto, tvPrecoProduto, tvValidadeProduto, tvQuantidade, tvMensagemEstoque;
-    private Button btnDiminuir, btnAumentar, btnAdicionarCarrinho;
+    private Button btnDiminuir, btnAumentar, btnAdicionarCarrinho, btnVoltarProduto;
+    private ImageView ivProduto;
     private int quantidade = 1;
     private int estoqueDisponivel;  // Estoque do produto
     private double precoProduto;
+
+    private Map<String, Integer> imageMap;
 
 
     @Override
@@ -31,7 +37,14 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_produto);
 
+        imageMap = new HashMap<>();
+        imageMap.put("albion", R.drawable.albion);
+        imageMap.put("camarosa", R.drawable.camarosa);
+        imageMap.put("san_andreas", R.drawable.san_andreas);
+        imageMap.put("sweet_charlie", R.drawable.sweet_charlie);
+
         // Referências dos elementos
+        ivProduto = findViewById(R.id.ivProduto);
         tvNomeProduto = findViewById(R.id.tvNomeProduto);
         tvPrecoProduto = findViewById(R.id.tvPrecoProduto);
         tvValidadeProduto = findViewById(R.id.tvValidadeProduto);
@@ -39,6 +52,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         tvMensagemEstoque = findViewById(R.id.tvMensagemEstoque);  // Mensagem de erro
         btnDiminuir = findViewById(R.id.btnDiminuir);
         btnAumentar = findViewById(R.id.btnAumentar);
+        btnVoltarProduto = findViewById(R.id.btnVoltarProduto);
         btnAdicionarCarrinho = findViewById(R.id.btnAdicionarCarrinho);
 
         // Recebe dados do produto da Intent
@@ -56,6 +70,14 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         tvNomeProduto.setText(nome);
         tvPrecoProduto.setText(String.format("Preço: R$ %.2f", precoProduto));
         tvValidadeProduto.setText("Validade: " + validadeFormatada);  // Exibe a data formatada
+        Integer imagemId = imageMap.get(nome.toLowerCase().replaceAll(" ", "_"));
+
+        if (imagemId != null) {
+            ivProduto.setImageResource(imagemId);
+        } else {
+            // Caso não encontre a imagem, defina uma imagem padrão
+            ivProduto.setImageResource(R.drawable.imagem_padrao);
+        }
         atualizarPrecoTotal();
 
         // Configuração dos botões de quantidade
@@ -88,6 +110,8 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
                 finish();  // Fecha a activity de detalhes do produto
             }
         });
+
+        btnVoltarProduto.setOnClickListener(v -> {finish(); });
 
     }
 

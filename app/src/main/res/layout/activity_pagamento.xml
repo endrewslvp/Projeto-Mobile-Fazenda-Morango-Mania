@@ -1,65 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/white">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
 
     <!-- Título -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/headerBorder"
         android:text="Selecione a Forma de Pagamento"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"/>
 
     <!-- Opções de Pagamento -->
     <RadioGroup
         android:id="@+id/paymentOptionsGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="392dp"
+        android:layout_height="446dp"
+        android:layout_below="@id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/debitCardOption"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cartão de Débito" />
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Cartão de Débito"
+            android:textColor="#FF6969"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/creditCardOption"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cartão de Crédito" />
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Cartão de Crédito"
+            android:textColor="#FF6969"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/pixOption"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pix" />
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Pix"
+            android:textColor="#FF6969"
+            android:textSize="28sp"
+            android:textStyle="bold" />
     </RadioGroup>
 
     <!-- Valor Total -->
+
+    <!-- Botões -->
     <TextView
         android:id="@+id/totalAmountTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total: R$ 0,00"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_below="@id/paymentOptionsGroup"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"/>
+        android:text="Total: R$ 0,00"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <!-- Botões -->
     <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/totalAmountTextView"
         android:orientation="horizontal"
         android:weightSum="2">
 
@@ -67,11 +126,11 @@
             android:id="@+id/cancelButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="Cancelar"
             android:backgroundTint="@color/red"
-            android:textColor="@color/white"
-            android:layout_marginEnd="8dp"/>
+            android:text="Cancelar"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/continueButton"
@@ -83,4 +142,4 @@
             android:text="Continuar"
             android:textColor="@color/white" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

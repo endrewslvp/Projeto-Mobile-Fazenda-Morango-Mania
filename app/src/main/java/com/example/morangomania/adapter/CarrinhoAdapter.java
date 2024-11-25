@@ -13,13 +13,16 @@ import android.widget.TextView;
 import com.example.morangomania.R;
 import com.example.morangomania.model.ProdutoCarrinho;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarrinhoAdapter extends ArrayAdapter<ProdutoCarrinho> {
     private Context context;
     private List<ProdutoCarrinho> produtosCarrinho;
     private TextView tvTotalCompra;
     private Button btnContinuar;
+    private Map<String, Integer> imageMap;
 
     public CarrinhoAdapter(Context context, List<ProdutoCarrinho> produtosCarrinho, TextView tvTotalCompra, Button btnContinuar) {
         super(context, 0, produtosCarrinho);
@@ -27,6 +30,12 @@ public class CarrinhoAdapter extends ArrayAdapter<ProdutoCarrinho> {
         this.produtosCarrinho = produtosCarrinho;
         this.tvTotalCompra = tvTotalCompra;
         this.btnContinuar = btnContinuar;
+
+        imageMap = new HashMap<>();
+        imageMap.put("albion", R.drawable.albion);
+        imageMap.put("camarosa", R.drawable.camarosa);
+        imageMap.put("san_andreas", R.drawable.san_andreas);
+        imageMap.put("sweet_charlie", R.drawable.sweet_charlie);
     }
 
     @Override
@@ -47,11 +56,19 @@ public class CarrinhoAdapter extends ArrayAdapter<ProdutoCarrinho> {
         ImageButton btnRemover = convertView.findViewById(R.id.btnRemover);
 
         // Preenche os dados do produto no carrinho
-        ivProduto.setImageBitmap(produtoCarrinho.getImagem());  // Assumindo que o produto tenha uma imagem
         tvNomeProduto.setText(produtoCarrinho.getNome());
-        tvPrecoProduto.setText(String.format("R$ %.2f", produtoCarrinho.getPreco()));
-        tvQuantidade.setText(String.valueOf(produtoCarrinho.getQuantidade()));
-        tvPrecoTotal.setText(String.format("R$ %.2f", produtoCarrinho.getPrecoTotal()));
+        tvPrecoProduto.setText(String.format("Preço: R$ %.2f", produtoCarrinho.getPreco()));
+        tvQuantidade.setText(String.valueOf("Quantiade: "+produtoCarrinho.getQuantidade()));
+        tvPrecoTotal.setText(String.format("Total: R$ %.2f", produtoCarrinho.getPrecoTotal()));
+
+        Integer imagemId = imageMap.get(produtoCarrinho.getNome().toLowerCase().replaceAll(" ", "_"));
+
+        if (imagemId != null) {
+            ivProduto.setImageResource(imagemId);
+        } else {
+            // Caso não encontre a imagem, defina uma imagem padrão
+            ivProduto.setImageResource(R.drawable.imagem_padrao);
+        }
 
         // Botões de aumentar e diminuir quantidade
         btnAumentar.setOnClickListener(v -> {

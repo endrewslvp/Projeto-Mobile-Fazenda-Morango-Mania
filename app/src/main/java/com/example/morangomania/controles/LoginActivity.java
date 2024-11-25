@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.morangomania.DAO.CadastroDAO;
 import com.example.morangomania.R;
+import com.example.morangomania.UserProfileActivity;
 import com.example.morangomania.messages.Messages;
 import com.example.morangomania.model.Cadastro;
 import java.sql.SQLException;
@@ -38,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent in = new Intent(LoginActivity.this, PainelcontroleActivity.class);
             startActivity(in);
         }else{
-            Messages.showMessageBox(this,"ERRO","CPF ou senha incorreto(s). Tente novamente.");
+            Toast.makeText(this, "CPF ou senha incorreto(s). Tente novamente.", Toast.LENGTH_SHORT).show();
         }
     }
 

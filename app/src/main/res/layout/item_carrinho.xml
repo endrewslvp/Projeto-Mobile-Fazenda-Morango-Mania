@@ -48,6 +48,13 @@
     </LinearLayout>
 
     <!-- Botões de controle (diminuir, aumentar, remover) -->
+    <ImageButton
+        android:id="@+id/btnDiminuir"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_minus" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -69,17 +76,10 @@
         android:src="@drawable/ic_plus" />
 
     <ImageButton
-        android:id="@+id/btnDiminuir"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_minus" />
-
-    <ImageButton
         android:id="@+id/btnRemover"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_remove" />
+        android:src="@drawable/ic_lixeira" />
 
 </LinearLayout>

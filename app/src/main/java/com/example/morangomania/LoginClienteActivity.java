@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,7 +58,7 @@ public class LoginClienteActivity extends AppCompatActivity {
             in.putExtra("Cliente",cliente);
             startActivity(in);
         }else{
-            Messages.showMessageBox(this,"ERRO","CPF ou senha incorreto(s). Tente novamente.");
+            Toast.makeText(this, "CPF ou senha incorreto(s). Tente novamente.", Toast.LENGTH_SHORT).show();
         }
     }
 }

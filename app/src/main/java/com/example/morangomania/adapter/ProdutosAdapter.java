@@ -11,16 +11,25 @@ import android.widget.TextView;
 import com.example.morangomania.R;
 import com.example.morangomania.model.Produtos;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProdutosAdapter extends BaseAdapter {
 
     private Context context;
     private List<Produtos> produtos;
+    private Map<String, Integer> imageMap;
 
     public ProdutosAdapter(Context context, List<Produtos> produtos) {
         this.context = context;
         this.produtos = produtos;
+
+        imageMap = new HashMap<>();
+        imageMap.put("albion", R.drawable.albion);
+        imageMap.put("camarosa", R.drawable.camarosa);
+        imageMap.put("san_andreas", R.drawable.san_andreas);
+        imageMap.put("sweet_charlie", R.drawable.sweet_charlie);
     }
 
     @Override
@@ -52,6 +61,15 @@ public class ProdutosAdapter extends BaseAdapter {
 
         nomeTextView.setText(produto.getNome());
         precoTextView.setText("R$ " + String.format("%.2f", produto.getPreco()));
+
+        Integer imagemId = imageMap.get(produto.getNome().toLowerCase().replaceAll(" ", "_"));
+
+        if (imagemId != null) {
+            produtoImageView.setImageResource(imagemId);
+        } else {
+            // Caso não encontre a imagem, defina uma imagem padrão
+            produtoImageView.setImageResource(R.drawable.imagem_padrao);
+        }
 
         return convertView;
     }

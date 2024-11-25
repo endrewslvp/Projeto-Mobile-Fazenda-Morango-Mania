@@ -18,6 +18,7 @@ import com.example.morangomania.R;
 import com.example.morangomania.controles.Carrinho;
 import com.example.morangomania.controles.InicioActivity;
 import com.example.morangomania.controles.PagamentoActivity;
+import com.example.morangomania.controles.ResumoPedidoActivity;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Endereco;
 import com.example.morangomania.model.ProdutoCarrinho;
@@ -68,9 +69,11 @@ public class PagamentoPixActivity extends AppCompatActivity {
             // Salvar no banco de dados
             VendaDAO vendaDAO = new VendaDAO();
             try {
-                vendaDAO.registrarVenda(cliente,produtosCarrinho,enderecoEntrega,totalCompra,metodoPagamento);
+                vendaDAO.registrarVenda(cliente,produtosCarrinho,enderecoEntrega,metodoPagamento);
                 Carrinho.limparCarrinho();
-                Intent intent = new Intent(PagamentoPixActivity.this,InicioActivity.class);
+                Intent intent = new Intent(PagamentoPixActivity.this, ConfirmacaoCompraActivity.class);
+                intent.putExtra("EnderecoEntrega",enderecoEntrega);
+                intent.putExtra("Cliente",cliente);
                 startActivity(intent);
             } catch (SQLException e) {
                 throw new RuntimeException(e);

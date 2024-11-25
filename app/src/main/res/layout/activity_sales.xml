@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Título para A Preparar -->
+    <TextView
+        android:id="@+id/statusPreparingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendas A Preparar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <!-- RecyclerView para A Preparar -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPreparing"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Título para Finalizado -->
+    <TextView
+        android:id="@+id/statusFinalizedTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendas Finalizadas"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <!-- RecyclerView para Finalizado -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFinalized"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

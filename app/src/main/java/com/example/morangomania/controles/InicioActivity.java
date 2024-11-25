@@ -17,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.morangomania.DAO.ProdutosDAO;
 import com.example.morangomania.R;
+import com.example.morangomania.SalesActivity;
+import com.example.morangomania.UserProfileActivity;
 import com.example.morangomania.adapter.ProdutosAdapter;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Produtos;
@@ -29,7 +31,7 @@ public class InicioActivity extends AppCompatActivity {
 
     private GridView gridView;
 
-//    private TextView usuarioname;
+    private TextView tvWelcome;
     private ProdutosAdapter produtoAdapter;
     private ProdutosDAO produtoDao;
     private List<Produtos> produtos;
@@ -42,11 +44,12 @@ public class InicioActivity extends AppCompatActivity {
 
         gridView = findViewById(R.id.productGridView);
         EditText searchBar = findViewById(R.id.searchBar);
+        tvWelcome = findViewById(R.id.tvWelcome);
+
         produtoDao = new ProdutosDAO();
 
         Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
-//        usuarioname = findViewById(R.id.teste);
-//        usuarioname.setText(cliente.getNome());
+        tvWelcome.setText("Bem-vindo, "+cliente.getNome());
 
         try {
             produtos = produtoDao.obterProdutos();
@@ -89,11 +92,25 @@ public class InicioActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
+        ImageButton profileButton = findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(v -> {
+            Intent intentProfile = new Intent(InicioActivity.this, UserProfileActivity.class);
+            intentProfile.putExtra("Cliente",cliente);
+            startActivity(intentProfile);
+        });
+
         ImageButton cartButton = findViewById(R.id.cartButton);
         cartButton.setOnClickListener(v -> {
             Intent intentCarrinho = new Intent(InicioActivity.this, CarrinhoActivity.class);
             intentCarrinho.putExtra("Cliente",cliente);
             startActivity(intentCarrinho);
+        });
+
+        ImageButton pedidosButton = findViewById(R.id.pedidosButton);
+        pedidosButton.setOnClickListener(v -> {
+            Intent intentPedidos = new Intent(InicioActivity.this, SalesActivity.class);
+            intentPedidos.putExtra("Cliente",cliente);
+            startActivity(intentPedidos);
         });
     }
 
