@@ -1,6 +1,6 @@
 package com.example.morangomania.DAO;
 
-import com.example.morangomania.conexao.ConexaoSQL;
+import com.example.morangomania.services.ConexaoSQL;
 import com.example.morangomania.model.Cadastro;
 
 import java.sql.Connection;

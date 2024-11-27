@@ -1,21 +1,19 @@
 package com.example.morangomania.DAO;
 
-import android.widget.Toast;
-
-import com.example.morangomania.conexao.ConexaoSQL;
+import com.example.morangomania.services.ConexaoSQL;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Endereco;
 import com.example.morangomania.model.ProdutoCarrinho;
-import com.example.morangomania.model.Produtos;
 import com.example.morangomania.model.Venda;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class VendaDAO {
@@ -58,39 +56,66 @@ public class VendaDAO {
 
     }
 
-    public List<Venda> obterVendas(int id, String status) throws SQLException {
+    public Map<String, List<Venda>> carregarVendas(int clienteId) {
+        Map<String, List<Venda>> listasVendas = new HashMap<>();
+        List<Venda> listaAPreparar = new ArrayList<>();
+        List<Venda> listaEntregue = new ArrayList<>();
 
-        if (status == null) {
-            status = "";  // ou outro valor default
+        Connection conn = ConexaoSQL.conectar();
+        String query = "SELECT * FROM dbo.Vendas WHERE Id_Cliente = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, clienteId);  // Filtra pelo ID do cliente
+            ResultSet rs = stmt.executeQuery();
+
+            // Mapa para agrupar vendas pelo código de compra
+            Map<String, Venda> mapaVendas = new HashMap<>();
+
+            while (rs.next()) {
+                String codigoCompra = rs.getString("CodigoCompra");
+                double totalCompra = rs.getDouble("TotalCompra");
+                int idProduto = rs.getInt("ID_Produto");
+                String metodoPagamento = rs.getString("MetodoPagamento");
+                String endereco = rs.getString("Endereco");
+
+                int quantidade = rs.getInt("Quantidade");  // Captura a quantidade comprada
+
+                if (mapaVendas.containsKey(codigoCompra)) {
+                    // Venda já existente, atualiza total e adiciona o produto com a quantidade
+                    Venda vendaExistente = mapaVendas.get(codigoCompra);
+                    vendaExistente.setTotalCompra(vendaExistente.getTotalCompra() + totalCompra);
+                    vendaExistente.addProduto(idProduto, quantidade);
+                } else {
+                    // Cria uma nova venda agrupada
+                    Venda novaVenda = new Venda();
+                    novaVenda.setCodigoCompra(codigoCompra);
+                    novaVenda.setTotalCompra(totalCompra);
+                    novaVenda.setMetodoPagamento(metodoPagamento);
+                    novaVenda.setEndereco(endereco);
+                    novaVenda.addProduto(idProduto, quantidade);
+                    novaVenda.setStatus(rs.getString("Situacao"));
+
+                    mapaVendas.put(codigoCompra, novaVenda);
+                }
+            }
+
+            // Converte o mapa em listas separadas
+            for (Venda venda : mapaVendas.values()) {
+                if ("A preparar".equals(venda.getStatus())) {
+                    listaAPreparar.add(venda);
+                } else if ("Entregue".equals(venda.getStatus())) {
+                    listaEntregue.add(venda);
+                }
+            }
+
+            listasVendas.put("A preparar", listaAPreparar);
+            listasVendas.put("Entregue", listaEntregue);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        List<Venda> vendas = new ArrayList<>();
 
-        String comando = "SELECT * FROM dbo.Vendas WHERE Id = ?, Status = ?";
-
-        PreparedStatement pst = conn.prepareStatement(comando);
-
-        // Definindo os valores dos parâmetros
-        pst.setInt(1, id);
-        pst.setString(2, status);
-
-        ResultSet rs = pst.executeQuery();
-
-        while (rs.next()) {
-            Venda venda = new Venda();
-            venda.setId(rs.getInt(1));
-            venda.setId_Cliente(rs.getInt(2));
-            venda.setId_Produto(rs.getInt(3));
-            venda.setQuantidade(rs.getInt(4));
-            venda.setTotalCompra(rs.getDouble(5));
-            venda.setCodigoCompra(rs.getString(6));
-            venda.setMetodoPagamento(rs.getString(7));
-            venda.setEndereco(rs.getString(8));
-            venda.setStatus(rs.getString(9));
-            vendas.add(venda);
-        }
-        conn.close();
-
-        return vendas;
+        return listasVendas;
     }
 }
 

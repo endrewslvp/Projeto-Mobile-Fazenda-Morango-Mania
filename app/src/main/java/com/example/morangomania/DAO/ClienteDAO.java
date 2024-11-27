@@ -1,9 +1,6 @@
 package com.example.morangomania.DAO;
 
-import android.content.ContentValues;
-
-import com.example.morangomania.conexao.ConexaoSQL;
-import com.example.morangomania.model.Cadastro;
+import com.example.morangomania.services.ConexaoSQL;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Endereco;
 

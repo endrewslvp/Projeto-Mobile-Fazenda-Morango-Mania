@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controles.LoginActivity">
+    tools:context=".activities_sistema.activities_colaborador.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -64,16 +64,28 @@
         android:id="@+id/editTextSenhaLogin"
         android:layout_width="315dp"
         android:layout_height="54dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="48dp"
         android:background="@drawable/caixasenha"
         android:ems="10"
         android:hint="Digite sua senha"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:padding="16dp"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCPFLogin" />
+
+    <ImageButton
+        android:id="@+id/btnTogglePassword"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_invisivel"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSenhaLogin"
+        app:layout_constraintTop_toTopOf="@+id/editTextSenhaLogin"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextSenhaLogin" />
 
     <Button
         android:id="@+id/btnEntrarLogin"

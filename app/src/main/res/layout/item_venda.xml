@@ -1,0 +1,47 @@
+<!-- item_venda.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/borda_item_venda"
+    android:layout_margin="8sp"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- Total da Compra e Método de Pagamento -->
+    <TextView
+        android:id="@+id/txtTotalCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: R$ 0.00"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtMetodoPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagamento: PIX" />
+
+    <!-- Endereço de Entrega -->
+    <TextView
+        android:id="@+id/txtEnderecoEntrega"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Endereço: Rua ABC" />
+
+    <!-- Lista de Produtos comprados -->
+    <TextView
+        android:id="@+id/txtProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Produtos: Produto 1 (x2), Produto 2 (x1)" />
+
+    <!-- Código de Compra -->
+    <TextView
+        android:id="@+id/txtCodigoCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Código: 12345"
+        android:textStyle="italic"
+        android:textSize="14sp" />
+</LinearLayout>

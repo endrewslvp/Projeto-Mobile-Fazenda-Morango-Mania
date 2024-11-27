@@ -1,5 +1,10 @@
 package com.example.morangomania.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Venda {
 
     private int Id;
@@ -11,6 +16,22 @@ public class Venda {
     private String MetodoPagamento;
     private String Endereco;
     private String Status;
+
+    private Map<Integer, Integer> produtosComprados = new HashMap<>();
+
+    public void addProduto(int idProduto, int quantidade) {
+        // Se o produto já existe, soma a quantidade
+        if (produtosComprados.containsKey(idProduto)) {
+            produtosComprados.put(idProduto, produtosComprados.get(idProduto) + quantidade);
+        } else {
+            produtosComprados.put(idProduto, quantidade);
+        }
+    }
+
+    public Map<Integer, Integer> getProdutosComprados() {
+        return produtosComprados;
+    }
+
 
 
     public int getId() {

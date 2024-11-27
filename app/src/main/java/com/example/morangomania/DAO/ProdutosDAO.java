@@ -1,8 +1,6 @@
 package com.example.morangomania.DAO;
 
-import android.content.Context;
-
-import com.example.morangomania.conexao.ConexaoSQL;
+import com.example.morangomania.services.ConexaoSQL;
 import com.example.morangomania.model.Produtos;
 
 import java.sql.Connection;
@@ -10,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +43,26 @@ public class ProdutosDAO {
 
         return produtos;
     }
+
+    public String obterNomeProdutoPorID(int id) throws SQLException {
+        String nomeProduto = null;
+        String comando = "SELECT Nome FROM dbo.Produtos WHERE Id = ?";  // Supondo que o nome da coluna seja 'Nome'
+
+        PreparedStatement pst = conn.prepareStatement(comando);
+        pst.setInt(1, id);
+
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {  // Verifica se há resultado
+            nomeProduto = rs.getString("Nome");
+        }
+
+        rs.close();  // Fecha o ResultSet
+        pst.close();  // Fecha o PreparedStatement
+
+        return nomeProduto;
+    }
+
 
 
 }

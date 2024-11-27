@@ -15,55 +15,52 @@
         android:theme="@style/Theme.Morangomania"
         tools:targetApi="31">
         <activity
-            android:name=".SalesActivity"
+            android:name=".activities_sistema.activities_cliente.tela_inicial.VendasActivity"
             android:exported="false" />
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfirmacaoCompraActivity"
+            android:name=".activities_sistema.activities_cliente.compra.ConfirmacaoCompraActivity"
             android:exported="false" />
         <activity
-            android:name=".NovoEnderecoEntregaActivity"
+            android:name=".activities_sistema.activities_cliente.compra.NovoEnderecoEntregaActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.EscolhaEnderecoActivity"
+            android:name=".activities_sistema.activities_cliente.compra.EscolhaEnderecoActivity"
             android:exported="false" />
         <activity
-            android:name=".CadastroCliente3Activity"
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroCliente3Activity"
             android:exported="false" />
         <activity
-            android:name=".CadastroCliente2Activity"
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroCliente2Activity"
             android:exported="false" />
         <activity
-            android:name=".CadastroClienteActivity"
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroClienteActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginClienteActivity"
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.LoginClienteActivity"
             android:exported="false" />
         <activity
-            android:name=".PagamentoCartaoActivity"
+            android:name=".activities_sistema.activities_cliente.compra.PagamentoCartaoActivity"
             android:exported="false" />
         <activity
-            android:name=".PagamentoPixActivity"
+            android:name=".activities_sistema.activities_cliente.compra.PagamentoPixActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.ResumoPedidoActivity"
+            android:name=".activities_sistema.activities_cliente.compra.ResumoPedidoActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.ItemCarrinhoActivity"
+            android:name=".activities_sistema.activities_cliente.tela_inicial.CarrinhoActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.CarrinhoActivity"
+            android:name=".activities_sistema.activities_cliente.tela_inicial.detalhes.DetalhesProdutoActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.DetalhesProdutoActivity"
+            android:name=".activities_sistema.activities_cliente.tela_inicial.InicioActivity"
             android:exported="false" />
         <activity
-            android:name=".controles.InicioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".controles.MainActivity"
+            android:name=".activities_sistema.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,15 +68,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controles.LoginActivity" />
-        <activity android:name=".controles.CadastroActivity" />
-        <activity android:name=".controles.EditarCadastroActivity" />
-        <activity android:name=".controles.PainelcontroleActivity" />
-        <activity android:name=".controles.ListaProdutosActivity" />
-        <activity android:name=".controles.ProdutoActivity" />
-        <activity android:name=".controles.CompraActivity" />
-        <activity android:name=".controles.PagamentoActivity" />
-        <activity android:name=".controles.QrcodeActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.LoginActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.CadastroActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.EditarCadastroActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.PainelcontroleActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.ListaProdutosActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.ProdutoActivity" />
+        <activity android:name=".activities_sistema.activities_cliente.compra.CompraActivity" />
+        <activity android:name=".activities_sistema.activities_cliente.compra.PagamentoActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.QrcodeActivity" />
     </application>
 
 </manifest>
