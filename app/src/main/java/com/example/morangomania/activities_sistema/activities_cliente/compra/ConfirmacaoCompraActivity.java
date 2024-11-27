@@ -1,3 +1,6 @@
+// A Activity ConfirmacaoCompraActivity exibe uma mensagem de agradecimento ao cliente e confirma o endereço de entrega dos morangos. 
+// O cliente é redirecionado para a tela inicial ao clicar no botão "Voltar ao Início".
+
 package com.example.morangomania.activities_sistema.activities_cliente.compra;
 
 import android.content.Intent;
@@ -15,31 +18,35 @@ import com.example.morangomania.model.Endereco;
 
 public class ConfirmacaoCompraActivity extends AppCompatActivity {
 
-    private TextView tvAgradecimentos,tvEnderecoConfirmacao;
+    // Declaração dos componentes da interface
+    private TextView tvAgradecimentos, tvEnderecoConfirmacao;
     private Button btnVoltarInicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this); // Habilita o estilo EdgeToEdge (para telas sem barra de status)
         setContentView(R.layout.activity_confirmacao_compra);
 
+        // Inicializa os componentes da interface
         tvAgradecimentos = findViewById(R.id.textViewAgradecimentos);
-        tvEnderecoConfirmacao =findViewById(R.id.textViewEnderecoConfirmacao);
+        tvEnderecoConfirmacao = findViewById(R.id.textViewEnderecoConfirmacao);
         btnVoltarInicio = findViewById(R.id.btnVoltar);
 
-        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
+        // Recebe os dados do cliente e do endereço de entrega passados pela Intent
+        Cliente cliente = (Cliente) getIntent().getSerializableExtra("Cliente");
         Endereco enderecoEntrega = (Endereco) getIntent().getSerializableExtra("EnderecoEntrega");
 
-        tvAgradecimentos.setText(cliente.getNome()+", muito obrigado pela preferência!");
-        tvEnderecoConfirmacao.setText("Seus morangos serão enviados para "+enderecoEntrega.toString());
+        // Exibe a mensagem de agradecimento e o endereço de entrega
+        tvAgradecimentos.setText(cliente.getNome() + ", muito obrigado pela preferência!");
+        tvEnderecoConfirmacao.setText("Seus morangos serão enviados para " + enderecoEntrega.toString());
 
+        // Ação ao clicar no botão Voltar
         btnVoltarInicio.setOnClickListener(v -> {
+            // Cria a Intent para voltar à tela inicial
             Intent intent = new Intent(ConfirmacaoCompraActivity.this, InicioActivity.class);
-            intent.putExtra("Cliente",cliente);
-            startActivity(intent);
+            intent.putExtra("Cliente", cliente);  // Passa o cliente para a tela inicial
+            startActivity(intent);  // Inicia a tela inicial
         });
-
-
     }
 }

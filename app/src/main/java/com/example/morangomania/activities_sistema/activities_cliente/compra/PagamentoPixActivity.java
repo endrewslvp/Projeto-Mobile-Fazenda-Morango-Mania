@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.graphics.Bitmap;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,27 +26,30 @@ import java.util.List;
 
 public class PagamentoPixActivity extends AppCompatActivity {
 
-    private String codigoPix = "00020126360014BR.GOV.BCB.PIX"; // Exemplo
+    private String codigoPix = "00020126360014BR.GOV.BCB.PIX"; // Exemplo de código Pix
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento_pix);
 
+        // Inicializando componentes da interface
         ImageView qrCodeImageView = findViewById(R.id.qrCodeImageView);
         TextView codigoPixTextView = findViewById(R.id.codigoPixTextView);
         Button copiarCodigoButton = findViewById(R.id.copiarCodigoButton);
         Button btnConfirmarPagamento = findViewById(R.id.btnConfirmarPagamento);
 
-        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
+        // Recebe os dados passados pela Intent
+        Cliente cliente = (Cliente) getIntent().getSerializableExtra("Cliente");
         Endereco enderecoEntrega = (Endereco) getIntent().getSerializableExtra("EnderecoEntrega");
         List<ProdutoCarrinho> produtosCarrinho = Carrinho.getItensCarrinho();
         String metodoPagamento = getIntent().getStringExtra("metodoPagamento");
         double totalCompra = getIntent().getDoubleExtra("totalCompra", 0.0);
 
+        // Exibe o código Pix na tela
         codigoPixTextView.setText(codigoPix);
 
-        // Gera QR Code
+        // Gera o QR Code para pagamento Pix
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap(codigoPix, com.google.zxing.BarcodeFormat.QR_CODE, 400, 400);
@@ -54,24 +58,30 @@ public class PagamentoPixActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // Ao clicar no botão "Copiar Código", o código Pix é copiado para a área de transferência
         copiarCodigoButton.setOnClickListener(v -> {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             clipboard.setText(codigoPix);
-            // Mostra mensagem ou Toast ao copiar
+            Toast.makeText(this, "Código Pix copiado para a área de transferência!", Toast.LENGTH_SHORT).show();
         });
 
+        // Ao clicar em "Confirmar Pagamento", registra a venda
         btnConfirmarPagamento.setOnClickListener(v -> {
-            // Salvar no banco de dados
+            // Salva a venda no banco de dados
             VendaDAO vendaDAO = new VendaDAO();
             try {
-                vendaDAO.registrarVenda(cliente,produtosCarrinho,enderecoEntrega,metodoPagamento);
+                vendaDAO.registrarVenda(cliente, produtosCarrinho, enderecoEntrega, metodoPagamento);
                 Carrinho.limparCarrinho();
+
+                // Redireciona para a tela de confirmação de compra
                 Intent intent = new Intent(PagamentoPixActivity.this, ConfirmacaoCompraActivity.class);
-                intent.putExtra("EnderecoEntrega",enderecoEntrega);
-                intent.putExtra("Cliente",cliente);
+                intent.putExtra("EnderecoEntrega", enderecoEntrega);
+                intent.putExtra("Cliente", cliente);
                 startActivity(intent);
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                // Exibe um erro caso a venda não seja registrada com sucesso
+                Toast.makeText(PagamentoPixActivity.this, "Erro ao registrar o pagamento. Tente novamente.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
         });
     }

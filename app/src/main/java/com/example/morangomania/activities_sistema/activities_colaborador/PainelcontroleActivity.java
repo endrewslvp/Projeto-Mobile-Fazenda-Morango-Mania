@@ -8,7 +8,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.morangomania.R;
-import com.example.morangomania.activities_sistema.activities_cliente.compra.CompraActivity;
 
 public class PainelcontroleActivity extends AppCompatActivity {
 

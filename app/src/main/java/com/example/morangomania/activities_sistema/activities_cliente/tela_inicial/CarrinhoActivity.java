@@ -80,6 +80,13 @@ public class CarrinhoActivity extends AppCompatActivity {
             intentCarrinho.putExtra("Cliente",cliente);
             startActivity(intentCarrinho);
         });
+
+        ImageButton pedidosButton = findViewById(R.id.pedidosButton);
+        pedidosButton.setOnClickListener(v -> {
+            Intent intentPedidos = new Intent(CarrinhoActivity.this, VendasActivity.class);
+            intentPedidos.putExtra("Cliente",cliente);
+            startActivity(intentPedidos);
+        });
     }
 
     private double calcularTotalCompra() {

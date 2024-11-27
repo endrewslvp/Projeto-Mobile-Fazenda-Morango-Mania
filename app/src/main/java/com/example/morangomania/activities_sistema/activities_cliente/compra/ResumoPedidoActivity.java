@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.morangomania.R;
@@ -15,6 +17,7 @@ import com.example.morangomania.model.Carrinho;
 import com.example.morangomania.model.Cliente;
 import com.example.morangomania.model.Endereco;
 import com.example.morangomania.model.ProdutoCarrinho;
+
 import java.util.List;
 
 public class ResumoPedidoActivity extends AppCompatActivity {
@@ -41,10 +44,13 @@ public class ResumoPedidoActivity extends AppCompatActivity {
         List<ProdutoCarrinho> produtosCarrinho = Carrinho.getItensCarrinho();
         String metodoPagamento = getIntent().getStringExtra("metodoPagamento");
         double totalCompra = getIntent().getDoubleExtra("totalCompra", 0.0);
-        Endereco enderecoEntrega = new Endereco();
-        if((Endereco) getIntent().getSerializableExtra("EnderecoEntrega")!=null){
-            enderecoEntrega = (Endereco) getIntent().getSerializableExtra("EnderecoEntrega");
-        } else enderecoEntrega = cliente.getEndereco();
+        Endereco enderecoEntrega = (Endereco) getIntent().getSerializableExtra("EnderecoEntrega");
+
+        // Caso o endereço não tenha sido passado, usa o endereço do cliente
+        if (enderecoEntrega == null) {
+            enderecoEntrega = cliente.getEndereco();
+        }
+
         Endereco finalEnderecoEntrega = enderecoEntrega;
 
         // Configurar o ListView com o adaptador
@@ -56,39 +62,53 @@ public class ResumoPedidoActivity extends AppCompatActivity {
         tvTotalCompra.setText(String.format("Total: R$ %.2f", totalCompra));
         tvEnderecoEntrega.setText(enderecoEntrega.toString());
 
-
         // Botão Cancelar
         btnCancelar.setOnClickListener(v -> finish());
 
         // Botão Finalizar
 
         btnFinalizar.setOnClickListener(v -> {
-            if ("Pix".equals(metodoPagamento)) {
-                // Abre a tela de pagamento Pix
-                Intent intentPix = new Intent(ResumoPedidoActivity.this, PagamentoPixActivity.class);
-                intentPix.putExtra("valorTotal", totalCompra);
-                intentPix.putExtra("EnderecoEntrega", finalEnderecoEntrega);
-                intentPix.putExtra("Cliente",cliente);
-                intentPix.putExtra("metodoPagamento", metodoPagamento);
-                intentPix.putExtra("totalCompra", totalCompra);
-                startActivity(intentPix);
+            if (validarDados(cliente, metodoPagamento, totalCompra, finalEnderecoEntrega)) {
+                iniciarPagamento(metodoPagamento, totalCompra, finalEnderecoEntrega, cliente);
             } else {
-                // Abre a tela de pagamento com cartão
-                Intent intentCartao = new Intent(ResumoPedidoActivity.this, PagamentoCartaoActivity.class);
-                intentCartao.putExtra("valorTotal", totalCompra);
-                intentCartao.putExtra("EnderecoEntrega", finalEnderecoEntrega);
-                intentCartao.putExtra("Cliente",cliente);
-                intentCartao.putExtra("metodoPagamento", metodoPagamento);
-                intentCartao.putExtra("totalCompra", totalCompra);
-                startActivity(intentCartao);
+                // Feedback para o usuário em caso de erro nos dados
+                Toast.makeText(ResumoPedidoActivity.this, "Verifique os dados do pedido!", Toast.LENGTH_SHORT).show();
             }
         });
 
+        // Botão para acessar o perfil
         ImageButton profileButton = findViewById(R.id.profileButton);
         profileButton.setOnClickListener(v -> {
             Intent intentProfile = new Intent(ResumoPedidoActivity.this, UserProfileActivity.class);
-            intentProfile.putExtra("Cliente",cliente);
+            intentProfile.putExtra("Cliente", cliente);
             startActivity(intentProfile);
         });
+    }
+
+    // Método para validar os dados antes de prosseguir com o pagamento
+    private boolean validarDados(Cliente cliente, String metodoPagamento, double totalCompra, Endereco enderecoEntrega) {
+        return cliente != null && metodoPagamento != null && totalCompra > 0 && enderecoEntrega != null;
+    }
+
+    // Método para iniciar o pagamento com base no método escolhido
+    private void iniciarPagamento(String metodoPagamento, double totalCompra, Endereco enderecoEntrega, Cliente cliente) {
+        Intent intent;
+        if ("Pix".equals(metodoPagamento)) {
+            // Abre a tela de pagamento Pix
+            intent = new Intent(ResumoPedidoActivity.this, PagamentoPixActivity.class);
+        } else {
+            // Abre a tela de pagamento com cartão
+            intent = new Intent(ResumoPedidoActivity.this, PagamentoCartaoActivity.class);
+        }
+
+        // Passa os dados para a próxima tela
+        intent.putExtra("valorTotal", totalCompra);
+        intent.putExtra("EnderecoEntrega", enderecoEntrega);
+        intent.putExtra("Cliente", cliente);
+        intent.putExtra("metodoPagamento", metodoPagamento);
+        intent.putExtra("totalCompra", totalCompra);
+
+        // Inicia a tela de pagamento
+        startActivity(intent);
     }
 }

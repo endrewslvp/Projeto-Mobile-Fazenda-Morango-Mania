@@ -1,4 +1,4 @@
-package com.example.morangomania.activities_sistema.activities_cliente.compra;
+package com.example.morangomania.activities_sistema.activities_colaborador;
 
 import android.os.Bundle;
 

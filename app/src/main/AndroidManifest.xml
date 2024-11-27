@@ -74,7 +74,7 @@
         <activity android:name=".activities_sistema.activities_colaborador.PainelcontroleActivity" />
         <activity android:name=".activities_sistema.activities_colaborador.ListaProdutosActivity" />
         <activity android:name=".activities_sistema.activities_colaborador.ProdutoActivity" />
-        <activity android:name=".activities_sistema.activities_cliente.compra.CompraActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.CompraActivity" />
         <activity android:name=".activities_sistema.activities_cliente.compra.PagamentoActivity" />
         <activity android:name=".activities_sistema.activities_colaborador.QrcodeActivity" />
     </application>
