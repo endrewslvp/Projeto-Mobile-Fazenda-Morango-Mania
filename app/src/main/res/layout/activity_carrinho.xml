@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Layout que aparece quando o carrinho está vazio -->
+    <LinearLayout
+        android:id="@+id/llCarrinhoVazio"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <!-- Ícone indicando carrinho vazio -->
+        <ImageView
+            android:src="@drawable/ic_empty_cart"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="Carrinho vazio" />
+
+        <!-- Texto informando que o carrinho está vazio -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ainda não há itens no seu carrinho."
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:gravity="center" />
+
+        <!-- Texto incentivando a adicionar produtos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clique nos produtos na tela inicial para adicioná-los aqui."
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Lista de produtos do carrinho -->
+    <ListView
+        android:id="@+id/listViewCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tvTotalCompra"
+        android:layout_below="@id/headerBorder"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Preço total da compra -->
+
+    <!-- Botão para continuar -->
+    <TextView
+        android:id="@+id/tvTotalCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnContinuar"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity="end"
+        android:paddingTop="16dp"
+        android:text="Preço Total: R$ 0.00"
+        android:textColor="#F44336"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Menu Inferior -->
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomMenu"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Continuar" />
+
+    <LinearLayout
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_bottom_menu"
+        android:weightSum="3">
+
+        <!-- Botão de Início -->
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Início"
+            android:src="@drawable/ic_home" />
+
+        <!-- Botão de Carrinho -->
+        <ImageButton
+            android:id="@+id/cartButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Carrinho"
+            android:src="@drawable/ic_cartwhite" />
+
+        <!-- Botão de Pedidos -->
+        <ImageButton
+            android:id="@+id/pedidosButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Configurações"
+            android:src="@drawable/ic_saco" />
+    </LinearLayout>
+
+</RelativeLayout>

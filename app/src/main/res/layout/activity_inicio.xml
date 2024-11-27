@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".activities_sistema.activities_cliente.tela_inicial.InicioActivity">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Mensagem de Boas-Vindas -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Bem-vindo, [usuario]."
+        android:textColor="#ff5b5b"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvWelcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvWelcome"
+        android:layout_centerHorizontal="true"
+        android:text="O que vai querer hoje?"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <!-- Barra de Pesquisa -->
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/tvWelcome2"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_bar_background"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="Pesquisar produtos"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
+
+    <!-- GridView para Exibir Produtos -->
+    <GridView
+        android:id="@+id/productGridView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/searchBar"
+        android:layout_above="@id/bottomMenu"
+        android:numColumns="2"
+        android:verticalSpacing="16dp"
+        android:horizontalSpacing="16dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- Menu Inferior -->
+    <LinearLayout
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_bottom_menu"
+        android:weightSum="3">
+
+        <!-- Botão de Início -->
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Início"
+            android:src="@drawable/ic_home" />
+
+        <!-- Botão de Carrinho -->
+        <ImageButton
+            android:id="@+id/cartButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Carrinho"
+            android:src="@drawable/ic_cartwhite" />
+
+        <!-- Botão de Pedidos -->
+        <ImageButton
+            android:id="@+id/pedidosButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Configurações"
+            android:src="@drawable/ic_saco" />
+    </LinearLayout>
+
+</RelativeLayout>

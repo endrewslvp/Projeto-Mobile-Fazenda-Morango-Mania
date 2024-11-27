@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <!-- Título PIX em maiúsculas -->
+    <TextView
+        android:id="@+id/tituloPixTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PIX"
+        android:textSize="24sp"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/qrCodeImageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:contentDescription="QR Code" />
+
+    <TextView
+        android:id="@+id/codigoPixTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Código Pix"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <!-- Nova TextView com instruções -->
+    <TextView
+        android:id="@+id/instrucoesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aponte a câmera do seu celular para o QR Code ou copie o código abaixo para realizar o pagamento."
+        android:textSize="14sp"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <Button
+        android:id="@+id/copiarCodigoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF6969"
+        android:text="Copiar Código" />
+
+    <Button
+        android:id="@+id/btnConfirmarPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Já realizei o pagamento"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,52 @@
         android:theme="@style/Theme.Morangomania"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities_sistema.activities_cliente.tela_inicial.VendasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.ConfirmacaoCompraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.NovoEnderecoEntregaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.EscolhaEnderecoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroCliente3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroCliente2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.CadastroClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.cadastro_e_login.LoginClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.PagamentoCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.PagamentoPixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.compra.ResumoPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.tela_inicial.CarrinhoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.tela_inicial.detalhes.DetalhesProdutoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.activities_cliente.tela_inicial.InicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities_sistema.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,17 +68,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".CadastroActivity"></activity>
-        <activity android:name=".EditarCadastroActivity"></activity>
-        <activity android:name=".PainelcontroleActivity"></activity>
-        <activity android:name=".ListaProdutosActivity"></activity>
-        <activity android:name=".ProdutoActivity"></activity>
-        <activity android:name=".CompraActivity"></activity>
-        <activity android:name=".PagamentoActivity"></activity>
-        <activity android:name=".QrcodeActivity"></activity>
-
-
+        <activity android:name=".activities_sistema.activities_colaborador.LoginActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.CadastroActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.EditarCadastroActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.PainelcontroleActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.ListaProdutosActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.ProdutoActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.CompraActivity" />
+        <activity android:name=".activities_sistema.activities_cliente.compra.PagamentoActivity" />
+        <activity android:name=".activities_sistema.activities_colaborador.QrcodeActivity" />
     </application>
 
 </manifest>

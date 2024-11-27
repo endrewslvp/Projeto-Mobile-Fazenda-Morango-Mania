@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Número do Cartão -->
+    <EditText
+        android:id="@+id/etNumeroCartao"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/headerBorder"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/caixanome"
+        android:paddingLeft="16dp"
+        android:hint="Número do Cartão"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etValidadeCartao"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/etNumeroCartao"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/caixanome"
+        android:paddingLeft="16dp"
+        android:hint="  Validade (MM/AA)"
+        android:inputType="text" />
+
+    <!-- CVC do Cartão -->
+    <EditText
+        android:id="@+id/etCvcCartao"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/etValidadeCartao"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/caixanome"
+        android:paddingLeft="16dp"
+        android:hint="  CVC"
+        android:inputType="numberPassword" />
+
+    <!-- Botão Finalizar Pagamento -->
+    <Button
+        android:id="@+id/btnFinalizarPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCvcCartao"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Finalizar Pagamento" />
+
+    <!-- Imagem Centralizada Abaixo do Botão -->
+    <ImageView
+        android:id="@+id/confirmationImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/btnFinalizarPagamento"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_card" />
+</RelativeLayout>

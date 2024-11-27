@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Título da tela -->
+    <TextView
+        android:id="@+id/tvEscolherEndereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha o endereço de entrega"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/headerBorder"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Spinner para escolher o endereço -->
+    <Spinner
+        android:id="@+id/spinnerEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEscolherEndereco"/>
+
+    <!-- Texto de instrução -->
+    <TextView
+        android:id="@+id/tvInstrucoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caso queira cadastrar um novo endereço, clique no botão abaixo."
+        android:layout_below="@id/spinnerEndereco"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"/>
+
+    <!-- Botão para cadastrar um novo endereço -->
+    <Button
+        android:id="@+id/btnCadastrarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInstrucoes"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Cadastrar Novo Endereço" />
+
+    <!-- Botão para confirmar o endereço escolhido -->
+    <Button
+        android:id="@+id/btnConfirmarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCadastrarEndereco"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF6969"
+        android:text="Confirmar Endereço" />
+
+    <!-- Imagem de entrega -->
+    <ImageView
+        android:id="@+id/ic_delivery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/btnConfirmarEndereco"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_delivery"
+        android:scaleType="centerInside" />
+
+</RelativeLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Logo Centralizada no Topo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="197dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo" />
+
+    <!-- Ícone de Perfil no Canto Superior Direito -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Profile"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Linha de Contorno Inferior da Barra -->
+    <View
+        android:id="@+id/headerBorder"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/logoImageView"
+        android:layout_marginTop="10dp"
+        android:background="#ff5b5b" />
+
+    <!-- Endereço de Entrega Label -->
+    <TextView
+        android:id="@+id/tvEnderecoEntregaLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Endereço de Entrega:"
+        android:textSize="18sp"
+        android:layout_below="@id/headerBorder"
+        android:layout_marginTop="10dp"
+        android:paddingTop="8dp"/>
+
+    <!-- Endereço de Entrega -->
+    <TextView
+        android:id="@+id/tvEnderecoEntrega"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rua Exemplo, 123 - Bairro Exemplo, Cidade, Estado"
+        android:textSize="16sp"
+        android:layout_below="@id/tvEnderecoEntregaLabel"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <!-- Método de Pagamento -->
+
+    <!-- Itens do Pedido -->
+
+    <!-- Lista de Resumo -->
+
+    <!-- Total Compra -->
+
+    <TextView
+        android:id="@+id/tvMetodoPagamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEnderecoEntrega"
+        android:layout_marginTop="30dp"
+        android:paddingTop="8dp"
+        android:text="Método de Pagamento: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvItensPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMetodoPagamento"
+        android:layout_marginTop="41dp"
+        android:text="Itens do Pedido"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listViewResumo"
+        android:layout_width="wrap_content"
+        android:layout_height="272dp"
+        android:layout_below="@id/tvItensPedido"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvTotalCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/Botoes"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="8dp"
+        android:text="Total: "
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Botões de Ação -->
+    <LinearLayout
+        android:id="@+id/Botoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#353535"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/btnFinalizar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
+            android:text="Finalizar Compra" />
+    </LinearLayout>
+</RelativeLayout>

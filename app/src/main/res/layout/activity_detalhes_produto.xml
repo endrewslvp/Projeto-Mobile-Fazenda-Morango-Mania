@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/activity_detalhes_produto.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Botão de Voltar -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnVoltarProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:textSize="18sp"
+            android:backgroundTint="#FF6969"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNomeProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome do Produto"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tvPrecoProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preço: R$ 0,00"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvValidadeProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Validade: --/--/----"
+        android:textSize="18sp"/>
+
+    <!-- Imagem do Produto -->
+    <ImageView
+        android:id="@+id/ivProduto"
+        android:layout_width="match_parent"
+        android:layout_height="372dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Imagem do Produto"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvMensagemEstoque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quantidade indisponível em estoque"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Contador de quantidade -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnDiminuir"
+            android:layout_width="78dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#FF6969"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="18sp"
+            android:padding="16dp"/>
+
+        <Button
+            android:id="@+id/btnAumentar"
+            android:layout_width="78dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#FF6969"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Botão para adicionar ao carrinho -->
+    <Button
+        android:id="@+id/btnAdicionarCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF6969"
+        android:text="Adicionar ao Carrinho - R$ 0,00" />
+</LinearLayout>
