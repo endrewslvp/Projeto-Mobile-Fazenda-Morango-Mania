@@ -1,3 +1,8 @@
+// Esta classe implementa a tela de visualização das vendas de um cliente.
+// As vendas são carregadas do banco de dados e agrupadas em duas listas: "A preparar" e "Entregue".
+// As listas são exibidas em dois RecyclerViews separados, permitindo ao usuário acessar o perfil
+// ou retornar à tela anterior.
+
 package com.example.morangomania.activities_sistema.activities_cliente.tela_inicial;
 
 import android.content.Intent;
@@ -28,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 public class VendasActivity extends AppCompatActivity {
+    // Declaração dos RecyclerViews e Adapters
     private RecyclerView recyclerAPreparar, recyclerEntregue;
     private VendaAdapter adapterAPreparar, adapterEntregue;
     private List<Venda> listaAPreparar = new ArrayList<>();
@@ -36,69 +42,75 @@ public class VendasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendas);
+        setContentView(R.layout.activity_vendas); // Define o layout da tela de vendas
 
+        // Inicializa os RecyclerViews
         recyclerAPreparar = findViewById(R.id.recyclerAPreparar);
         recyclerEntregue = findViewById(R.id.recyclerEntregue);
 
+        // Define o layout linear para as listas
         recyclerAPreparar.setLayoutManager(new LinearLayoutManager(this));
         recyclerEntregue.setLayoutManager(new LinearLayoutManager(this));
 
-        Cliente cliente =(Cliente) getIntent().getSerializableExtra("Cliente");
+        // Recupera o objeto Cliente da Intent
+        Cliente cliente = (Cliente) getIntent().getSerializableExtra("Cliente");
 
-        // Carregar dados do banco através do VendaDAO
+        // Carrega os dados das vendas do banco de dados usando o DAO
         VendaDAO vendaDAO = new VendaDAO();
         Map<String, List<Venda>> listasVendas = vendaDAO.carregarVendas(cliente.getId());
 
+        // Atribui as listas retornadas aos adaptadores
         listaAPreparar = listasVendas.get("A preparar");
         listaEntregue = listasVendas.get("Entregue");
 
-        adapterAPreparar = new VendaAdapter(listaAPreparar);
-        adapterEntregue = new VendaAdapter(listaEntregue);
+        adapterAPreparar = new VendaAdapter(listaAPreparar); // Adapter para vendas "A preparar"
+        adapterEntregue = new VendaAdapter(listaEntregue);   // Adapter para vendas "Entregue"
 
+        // Define os adapters nos RecyclerViews
         recyclerAPreparar.setAdapter(adapterAPreparar);
         recyclerEntregue.setAdapter(adapterEntregue);
 
+        // Botão para acessar o perfil do usuário
         ImageButton profileButton = findViewById(R.id.profileButton);
         profileButton.setOnClickListener(v -> {
             Intent intentProfile = new Intent(VendasActivity.this, UserProfileActivity.class);
-            intentProfile.putExtra("Cliente",cliente);
-            startActivity(intentProfile);
+            intentProfile.putExtra("Cliente", cliente);
+            startActivity(intentProfile); // Abre a tela de perfil do usuário
         });
 
+        // Botão para retornar à tela anterior
         Button btnVoltarUsuario = findViewById(R.id.btnVoltarPedidos);
-        btnVoltarUsuario.setOnClickListener(v -> {finish();});
+        btnVoltarUsuario.setOnClickListener(v -> finish()); // Fecha a atividade atual
     }
 
-
-
+    // Método para carregar vendas do banco de dados
     private void carregarVendas(int id) {
-        Connection conn = ConexaoSQL.conectar();
-        String query = "SELECT * FROM dbo.Vendas WHERE Id_Cliente = ?";
+        Connection conn = ConexaoSQL.conectar(); // Conecta ao banco de dados
+        String query = "SELECT * FROM dbo.Vendas WHERE Id_Cliente = ?"; // Consulta SQL
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, id);  // Filtra pelo ID do cliente
-            ResultSet rs = stmt.executeQuery();
+            stmt.setInt(1, id); // Filtra vendas pelo ID do cliente
+            ResultSet rs = stmt.executeQuery(); // Executa a consulta
 
             // Mapa para agrupar vendas pelo código de compra
             Map<String, Venda> mapaVendas = new HashMap<>();
 
             while (rs.next()) {
+                // Captura os dados da venda
                 String codigoCompra = rs.getString("CodigoCompra");
                 double totalCompra = rs.getDouble("TotalCompra");
                 int idProduto = rs.getInt("ID_Produto");
                 String metodoPagamento = rs.getString("MetodoPagamento");
                 String endereco = rs.getString("Endereco");
-
-                int quantidade = rs.getInt("Quantidade");  // Captura a quantidade comprada
+                int quantidade = rs.getInt("Quantidade");
 
                 if (mapaVendas.containsKey(codigoCompra)) {
-                    // Venda já existente, atualiza total e adiciona o produto com a quantidade
+                    // Se a venda já existe no mapa, atualiza total e produtos
                     Venda vendaExistente = mapaVendas.get(codigoCompra);
                     vendaExistente.setTotalCompra(vendaExistente.getTotalCompra() + totalCompra);
                     vendaExistente.addProduto(idProduto, quantidade);
                 } else {
-                    // Cria uma nova venda agrupada
+                    // Cria uma nova venda se não estiver no mapa
                     Venda novaVenda = new Venda();
                     novaVenda.setCodigoCompra(codigoCompra);
                     novaVenda.setTotalCompra(totalCompra);
@@ -107,11 +119,11 @@ public class VendasActivity extends AppCompatActivity {
                     novaVenda.addProduto(idProduto, quantidade);
                     novaVenda.setStatus(rs.getString("Situacao"));
 
-                    mapaVendas.put(codigoCompra, novaVenda);
+                    mapaVendas.put(codigoCompra, novaVenda); // Adiciona ao mapa
                 }
             }
 
-            // Converte o mapa em listas separadas
+            // Converte o mapa em listas separadas por status
             for (Venda venda : mapaVendas.values()) {
                 if ("A preparar".equals(venda.getStatus())) {
                     listaAPreparar.add(venda);
@@ -120,6 +132,7 @@ public class VendasActivity extends AppCompatActivity {
                 }
             }
 
+            // Atualiza os adaptadores com os dados carregados
             adapterAPreparar = new VendaAdapter(listaAPreparar);
             adapterEntregue = new VendaAdapter(listaEntregue);
 
@@ -131,5 +144,4 @@ public class VendasActivity extends AppCompatActivity {
             Toast.makeText(this, "Erro ao carregar vendas", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

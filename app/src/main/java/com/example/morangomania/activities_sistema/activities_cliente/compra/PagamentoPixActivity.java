@@ -1,3 +1,7 @@
+// Este código implementa uma tela de pagamento via Pix.
+// Ele gera um QR Code com o código Pix, permite copiar o código para a área de transferência
+// e registra a venda após a confirmação do pagamento.
+
 package com.example.morangomania.activities_sistema.activities_cliente.compra;
 
 import android.content.ClipboardManager;

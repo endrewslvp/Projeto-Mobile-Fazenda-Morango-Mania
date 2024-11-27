@@ -7,32 +7,36 @@ import java.util.Map;
 
 public class Venda {
 
-    private int Id;
-    private int Id_Cliente;
-    private int Id_Produto;
-    private int Quantidade;
-    private double TotalCompra;
-    private String CodigoCompra;
-    private String MetodoPagamento;
-    private String Endereco;
-    private String Status;
+    // Atributos principais da venda
+    private int Id;               // ID da venda
+    private int Id_Cliente;       // ID do cliente que realizou a compra
+    private int Id_Produto;       // ID do produto comprado
+    private int Quantidade;      // Quantidade do produto comprado
+    private double TotalCompra;   // Total da compra
+    private String CodigoCompra;  // Código de identificação da compra
+    private String MetodoPagamento; // Metodo de pagamento utilizado
+    private String Endereco;      // Endereço de entrega
+    private String Status;        // Status da venda (ex: 'Em processamento', 'Concluído')
 
+    // Mapa para armazenar os produtos comprados e suas quantidades
     private Map<Integer, Integer> produtosComprados = new HashMap<>();
 
+    // Metodo para adicionar um produto ao mapa de produtos comprados
     public void addProduto(int idProduto, int quantidade) {
         // Se o produto já existe, soma a quantidade
         if (produtosComprados.containsKey(idProduto)) {
             produtosComprados.put(idProduto, produtosComprados.get(idProduto) + quantidade);
         } else {
-            produtosComprados.put(idProduto, quantidade);
+            produtosComprados.put(idProduto, quantidade); // Caso contrário, adiciona um novo produto
         }
     }
 
+    // Retorna o mapa com os produtos comprados
     public Map<Integer, Integer> getProdutosComprados() {
         return produtosComprados;
     }
 
-
+    // Métodos de acesso e modificação para os atributos da classe
 
     public int getId() {
         return Id;

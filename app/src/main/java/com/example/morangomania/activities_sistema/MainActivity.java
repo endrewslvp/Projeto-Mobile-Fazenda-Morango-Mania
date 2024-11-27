@@ -13,11 +13,6 @@ import com.example.morangomania.R;
 import com.example.morangomania.activities_sistema.activities_cliente.cadastro_e_login.LoginClienteActivity;
 import com.example.morangomania.activities_sistema.activities_colaborador.LoginActivity;
 
-/**
- * MainActivity é a tela principal do aplicativo.
- * Esta tela fornece botões para redirecionar o usuário para as telas de login:
- * uma para clientes e outra para colaboradores.
- */
 public class MainActivity extends AppCompatActivity {
 
     @Override

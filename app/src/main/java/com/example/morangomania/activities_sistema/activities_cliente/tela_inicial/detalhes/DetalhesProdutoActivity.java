@@ -1,3 +1,10 @@
+// Este código implementa a tela de detalhes de um produto.
+// Ele exibe o nome, preço, validade e estoque do produto, permitindo ao usuário 
+// ajustar a quantidade desejada e adicionar o produto ao carrinho. 
+// O botão de "Adicionar ao Carrinho" é desativado caso a quantidade solicitada 
+// exceda o estoque disponível. A data de validade do produto é formatada e exibida 
+// adequadamente. O botão de voltar permite que o usuário saia da tela de detalhes.
+
 package com.example.morangomania.activities_sistema.activities_cliente.tela_inicial.detalhes;
 
 import android.content.Intent;
@@ -19,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DetalhesProdutoActivity extends AppCompatActivity {
+    // Declaracao dos componentes da interface
     private TextView tvNomeProduto, tvPrecoProduto, tvValidadeProduto, tvQuantidade, tvMensagemEstoque;
     private Button btnDiminuir, btnAumentar, btnAdicionarCarrinho, btnVoltarProduto;
     private ImageView ivProduto;
@@ -26,8 +34,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
     private int estoqueDisponivel;  // Estoque do produto
     private double precoProduto;
 
-    private Map<String, Integer> imageMap;
-
+    private Map<String, Integer> imageMap; // Mapeamento dos nomes dos produtos para suas imagens
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         imageMap.put("san_andreas", R.drawable.san_andreas);
         imageMap.put("sweet_charlie", R.drawable.sweet_charlie);
 
-        // Referências dos elementos
+        // Inicializa os componentes da interface
         ivProduto = findViewById(R.id.ivProduto);
         tvNomeProduto = findViewById(R.id.tvNomeProduto);
         tvPrecoProduto = findViewById(R.id.tvPrecoProduto);
@@ -109,7 +116,6 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         });
 
         btnVoltarProduto.setOnClickListener(v -> {finish(); });
-
     }
 
     private void atualizarPrecoTotal() {
